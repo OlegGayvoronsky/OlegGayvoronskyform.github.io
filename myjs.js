@@ -51,3 +51,26 @@ saveButton.addEventListener('click', function () {
     window.localStorage.setItem('timestamp', (new Date()).getTime());
    }, false);
    textarea.value = window.localStorage.getItem('value');
+
+formcarry({
+    form: "pSaR66un7",
+    // id or the class name of the form element, only form element allowed
+    // works with css selectors
+    // # <= for id
+    // . <= for class
+    element: "#my-formcarry",
+    extraData: {
+      // add whatever you want
+      screenSize: window.screen.width + " " +window.screen.height,
+      language: window.navigator.language,
+    },
+    // Success callback, you can show alert messages
+    // or redirect the user in this function
+    onSuccess: function(response){
+      alert(Данные успешно отправлены!)
+    },
+    // Error callback, a good place to show errors 🗿
+    onError: function(error){
+      alert(Поверьте данные еще раз, найдена ошибка!)
+    }
+  });
