@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 $(document).ready(function(){
     //Скрыть PopUp при загрузке страницы    
     PopUpHide();
@@ -51,3 +53,23 @@ saveButton.addEventListener('click', function () {
     window.localStorage.setItem('timestamp', (new Date()).getTime());
    }, false);
    textarea.value = window.localStorage.getItem('value');
+
+$(function(){
+    $(".ajaxForm").submit(function(e){
+        e.preventDefault();
+        var href = $(this).attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: href,
+            data: $(this).serialize(),
+            success: function(response){
+                if(response.status == "success"){
+                    alert("We received your submission, thank you!");
+                }else{
+                    alert("An error occured: " + response.message);
+                }
+            }
+        });
+    });
+});
