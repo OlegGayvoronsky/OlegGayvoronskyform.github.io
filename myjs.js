@@ -40,9 +40,10 @@ $(function(){
             data: $(this).serialize(),
             success: function(response){
                 if(response.status == "success"){
-                    alert("We received your submission, thank you!");
-                }else{
-                    alert("An error occured: " + response.message);
+                    alert("Отправка совершена успешно!");
+                }
+                else{
+                    alert("Ошибка: " + response.message);
                 }
             }
         });
